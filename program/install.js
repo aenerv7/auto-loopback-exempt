@@ -23,7 +23,7 @@ main(async () => {
   try {
     nssm('stop', SERVICE_NAME);
   } catch (error) {
-    if (!/has not been started|does not exist/.test(error.message)) {
+    if (!(/has not been started|does not exist/.test(error.message))) {
       throw error;
     }
   }
@@ -31,7 +31,7 @@ main(async () => {
   try {
     nssm('remove', SERVICE_NAME, 'confirm');
   } catch (error) {
-    if (!/does not exist/.test(error.message)) {
+    if (!(/does not exist/.test(error.message))) {
       throw error;
     }
   }
